@@ -1,6 +1,8 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "conexa-news",
+    "slug": "conexa-news",
+    "scheme": "conexa-news",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "web": {
@@ -15,7 +17,8 @@
         }
       ]
     ],
-    "name": "conexa-news",
-    "slug": "conexa-news"
+    "android": {
+      "softwareKeyboardLayoutMode": "pan"
+    }
   }
 }

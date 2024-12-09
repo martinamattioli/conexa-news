@@ -1,20 +1,10 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { Link } from "expo-router";
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function Page() {
-  return (
-    <View className="flex flex-1">
-      <Header />
-      <Content />
-      <Footer />
-    </View>
-  );
-}
+// TODO:
 
-function Content() {
+export default function Favorites() {
   return (
     <View className="flex-1">
       <View className="py-12 md:py-24 lg:py-32 xl:py-48">
@@ -24,7 +14,7 @@ function Content() {
               role="heading"
               className="text-3xl text-center native:text-5xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl"
             >
-              Welcome to Conexa News
+              FAVORITES!
             </Text>
             <View className="gap-4">
               <Link

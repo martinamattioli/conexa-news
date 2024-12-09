@@ -1,19 +1,22 @@
 import "../global.css";
 import React, { useEffect, useState } from "react";
 import { Stack, useRouter } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { SafeAreaView } from "react-native";
 import { AUTH_STACK_ROUTES } from "@/constants/routes";
+import { useLoginStore } from "@/lib/stores/login";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ActivityIndicator, View } from "react-native";
 
 export default function Layout() {
+  const [queryClient] = useState(() => new QueryClient());
+  // TODO: useAuth
+  const token = useLoginStore((state) => state.token);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const checkAuth = async () => {
-      const userToken = await AsyncStorage.getItem("userToken");
-      setIsAuthenticated(!!userToken);
+      setIsAuthenticated(!!token);
       setIsLoading(false);
     };
 
@@ -23,7 +26,7 @@ export default function Layout() {
   useEffect(() => {
     if (!isLoading) {
       if (isAuthenticated) {
-        router.replace("/");
+        router.replace("/home");
       } else {
         router.replace("/login");
       }
@@ -31,16 +34,21 @@ export default function Layout() {
   }, [isAuthenticated, isLoading]);
 
   if (isLoading) {
-    return null; // TODO: Loading
+    // TODO: check loading
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#000" />
+      </View>
+    );
   }
 
   return (
-    <SafeAreaView className="flex flex-1">
+    <QueryClientProvider client={queryClient}>
       <Stack screenOptions={{ headerShown: false }}>
         {AUTH_STACK_ROUTES.map((route) => (
           <Stack.Screen key={route} name={route} />
         ))}
       </Stack>
-    </SafeAreaView>
+    </QueryClientProvider>
   );
 }

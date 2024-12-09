@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import TextInput from "@/components/TextInput";
 import { isIos } from "@/constants/platform";
+import { useLoginStore } from "@/lib/stores/login";
 import { hideKeyboard } from "@/utils/keyboard";
 import { router } from "expo-router";
 import { useForm } from "react-hook-form";
@@ -11,19 +12,28 @@ import {
   View,
 } from "react-native";
 
+// TODO: Translations, Loading state
+// TODO: Form validation: clear errors on change and submit
+
 export function Login() {
+  const { setToken, storeLoginData } = useLoginStore();
+
   const {
     control,
     handleSubmit,
-    watch,
     formState: { isSubmitting },
   } = useForm();
 
   const onSubmit = (data) => {
-    // TODO: check keyboard bug
+    // TODO: fix keyboard
     hideKeyboard();
-    console.log("Submitted Data:", data);
-    router.replace("/news");
+
+    storeLoginData(data);
+    // Set random token just to simulate login
+    const token = Math.random().toString(36).substring(7);
+    setToken(token);
+
+    router.replace("/home");
   };
 
   return (
@@ -31,6 +41,7 @@ export function Login() {
       <View className="flex-1 items-center justify-between p-8 bg-white">
         <KeyboardAvoidingView
           className="w-full"
+          // TODO: verify behavior
           behavior={isIos ? "padding" : undefined}
           style={{ flex: 1 }}
         >
@@ -43,28 +54,26 @@ export function Login() {
                 placeholder="Ingrese su email"
                 keyboardType="email-address"
                 label="Email"
-                // TODO: uncomment
-                // rules={{
-                //   required: "You must enter your email",
-                //   pattern: {
-                //     value: /^\S+@\S+$/i,
-                //     message: "Enter a valid email address",
-                //   },
-                // }}
+                rules={{
+                  required: "You must enter your email",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Enter a valid email address",
+                  },
+                }}
               />
               <TextInput
                 control={control}
                 name="password"
                 placeholder="Ingrese su contraseña"
                 label="Contraseña"
-                // TODO: uncomment
-                // rules={{
-                //   required: "You must enter your password",
-                //   minLength: {
-                //     value: 8,
-                //     message: "Password must be at least 8 characters",
-                //   },
-                // }}
+                rules={{
+                  required: "You must enter your password",
+                  minLength: {
+                    value: 8,
+                    message: "Password must be at least 8 characters",
+                  },
+                }}
               />
             </View>
           </View>

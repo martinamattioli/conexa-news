@@ -8,8 +8,6 @@
 
   - `app`: Folder based routing directory.
 
-  - `assets`: Images, fonts, sounds, etc.
-
   - `components`: Reusable React components.
 
   - `utils`: Helpers and reusable methods.

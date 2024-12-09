@@ -12,12 +12,15 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@tanstack/react-query": "^5.62.3",
+    "apisauce": "^3.1.0",
     "expo": "^52.0.16",
     "expo-constants": "~17.0.3",
     "expo-linking": "~7.0.3",
     "expo-router": "~4.0.11",
     "expo-splash-screen": "~0.29.13",
     "expo-status-bar": "~2.0.0",
+    "jest": "~29.7.0",
+    "jest-expo": "~52.0.2",
     "nativewind": "^4.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -28,11 +31,13 @@
     "react-native-safe-area-context": "4.12.0",
     "react-native-screens": "~4.1.0",
     "react-native-web": "~0.19.10",
+    "react-query-kit": "^3.3.1",
     "tailwindcss": "^3.4.16",
     "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@testing-library/react-native": "^12.9.0",
     "@types/react": "~18.3.12",
     "typescript": "~5.3.3"
   },

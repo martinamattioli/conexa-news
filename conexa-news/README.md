@@ -107,7 +107,7 @@ yarn test
 
 ## 🔧 Additional Setup
 
-Before running the project, make sure to add the .env file to the root directory.
+Before running the project, make sure to have the .env file in the root directory.
 
 ---
 

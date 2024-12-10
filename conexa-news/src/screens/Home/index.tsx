@@ -1,6 +1,7 @@
 import LoadingWrapper from "@/components/LoadingWrapper";
 import { NewsCard } from "@/components/NewsCard";
 import { useGetNews } from "@/lib/api/news/useGetNews";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FlatList, View } from "react-native";
@@ -26,6 +27,10 @@ export function Home() {
     setNews(filteredNews);
   }, [searchQuery]);
 
+  const handleCardPress = (id: number) => {
+    router.push(`/home/${id}`);
+  };
+
   return (
     <LoadingWrapper isLoading={isLoading}>
       <View className="flex gap-y-4">
@@ -44,7 +49,12 @@ export function Home() {
           data={news}
           showsVerticalScrollIndicator={false}
           renderItem={({ item: { id, ...news } }) => (
-            <NewsCard key={id} id={id} {...news} />
+            <NewsCard
+              key={id}
+              id={id}
+              onPress={() => handleCardPress(id)}
+              {...news}
+            />
           )}
           keyExtractor={({ id }) => `${id}`}
         />

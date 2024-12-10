@@ -8,19 +8,16 @@ interface NewsCardProps {
   id: number;
   title: string;
   body: string;
+  onPress?: () => void;
 }
 
-export function NewsCard({ id, title, body }: NewsCardProps) {
+export function NewsCard({ id, title, body, onPress }: NewsCardProps) {
   const { isFavorite, handleSetFavorite } = useFavorite({ key: `${id}` });
   const router = useRouter();
 
-  const handleCardPress = () => {
-    router.push(`/home/${id}`);
-  };
-
   return (
     <TouchableOpacity
-      onPress={handleCardPress}
+      onPress={onPress}
       className="w-full my-1"
       accessible={true}
       accessibilityRole="button"

@@ -47,15 +47,21 @@ describe("NewsCard", () => {
     expect(getByText("News body content")).toBeTruthy();
   });
 
-  it("should navigate when the card is pressed", () => {
+  it("should call onPress when the card is pressed", () => {
+    const onPress = jest.fn();
     const { getByRole } = render(
-      <NewsCard id={1} title="News Title" body="News body content" />
+      <NewsCard
+        id={1}
+        title="News Title"
+        body="News body content"
+        onPress={onPress}
+      />
     );
 
     const card = getByRole("button");
     fireEvent.press(card);
 
-    expect(mockPush).toHaveBeenCalledWith("/home/1");
+    expect(onPress).toHaveBeenCalledTimes(1);
   });
 
   it("should call handleSetFavorite when the favorite icon is pressed", () => {

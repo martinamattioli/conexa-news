@@ -5,9 +5,9 @@
 The app includes three main screens:
 
 - **Home**: A news list with a search feature by title or content.  
-- **Details**: A detailed view of a specific news article.  
 - **Favorites**: A screen displaying the user’s saved favorite news articles.  
-- **User**: A screen containing detailed user information, such as name, email, and phone.  
+- **User**: A screen containing detailed user information, such as name, email, and phone.
+- **News Detail**: A detailed view of a specific news article.  
 - **Login**: A login screen to authenticate the user before accessing the app’s features.  
 
 The app supports multiple languages and uses persistent storage for both user authentication tokens and favorite articles.

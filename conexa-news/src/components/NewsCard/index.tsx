@@ -1,4 +1,3 @@
-import { useRouter } from "expo-router";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import IconButton from "../IconButton";
 import Icon from "@expo/vector-icons/FontAwesome";
@@ -13,7 +12,6 @@ interface NewsCardProps {
 
 export function NewsCard({ id, title, body, onPress }: NewsCardProps) {
   const { isFavorite, handleSetFavorite } = useFavorite({ key: `${id}` });
-  const router = useRouter();
 
   return (
     <TouchableOpacity

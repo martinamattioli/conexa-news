@@ -19,7 +19,6 @@ export const useLoginStore = createPersistentStore<LoginStore>(
     setIsLogged: (isLogged: boolean) =>
       set((state) => ({ ...state, isLogged })),
   }),
-
   {
     name: "login-store",
     partialize: (state) => ({

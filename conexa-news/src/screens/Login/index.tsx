@@ -23,12 +23,11 @@ export function Login() {
     formState: { isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: { email: string; password: string }) => {
     hideKeyboard();
     storeLoginData(data);
     const token = Math.random().toString(36).substring(7);
     setToken(token);
-
     router.replace("/home");
   };
 
@@ -36,10 +35,8 @@ export function Login() {
     <TouchableWithoutFeedback onPress={hideKeyboard}>
       <View className="flex-1 items-center justify-between p-8 bg-white">
         <KeyboardAvoidingView
-          className="w-full"
-          // TODO: verify behavior
+          className="w-full flex-1"
           behavior={isIos ? "padding" : undefined}
-          style={{ flex: 1 }}
         >
           <View className="w-full gap-y-16">
             <Text className="text-2xl font-bold">{t("login.welcome")}</Text>
@@ -52,6 +49,10 @@ export function Login() {
                 label={t("email")}
                 rules={{
                   required: t("login.required", { field: t("login.email") }),
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    message: t("login.invalidEmail"),
+                  },
                 }}
               />
               <TextInput

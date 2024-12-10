@@ -2,7 +2,7 @@ import { useLoginStore } from "@/lib/stores/login";
 import { router } from "expo-router";
 
 export const useAuth = () => {
-  const { loginData, setIsLogged, clearToken, clearLoginData } =
+  const { token, loginData, setIsLogged, clearToken, clearLoginData } =
     useLoginStore();
 
   const handleLogout = () => {
@@ -13,6 +13,7 @@ export const useAuth = () => {
   };
 
   return {
+    token,
     loginData,
     handleLogout,
   };

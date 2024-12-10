@@ -6,6 +6,7 @@ import { ScrollView, View } from "react-native";
 
 export default function Favorites() {
   const { favorites } = useNewsStore();
+
   const handleCardPress = (id: number) => {
     router.push(`/favorites/${id}`);
   };

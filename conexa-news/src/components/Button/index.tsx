@@ -32,22 +32,17 @@ export function Button({
         buttonVariantClasses[variant]
       } ${disabled ? "opacity-25" : "opacity-100"} ${className}`}
     >
-      {
-        // TODO: ver
-        ({ pressed }) => (
-          <View>
-            {loading ? (
-              <ActivityIndicator testID="ActivityIndicator" />
-            ) : (
-              <Text
-                className={`text-lg font-medium ${textVariantClasses[variant]}`}
-              >
-                {title}
-              </Text>
-            )}
-          </View>
-        )
-      }
+      <View>
+        {loading ? (
+          <ActivityIndicator testID="ActivityIndicator" />
+        ) : (
+          <Text
+            className={`text-lg font-medium ${textVariantClasses[variant]}`}
+          >
+            {title}
+          </Text>
+        )}
+      </View>
     </Pressable>
   );
 }

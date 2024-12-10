@@ -8,7 +8,8 @@
     "password": "Password",
     "enter": "Enter your {{field}}",
     "login": "Log in",
-    "required": "You must enter your {{field}}."
+    "required": "You must enter your {{field}}.",
+    "invalidEmail": "Invalid email."
   },
   "home": {
     "header": "News",

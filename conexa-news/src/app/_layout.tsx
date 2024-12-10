@@ -3,14 +3,13 @@ import "../config/i18n";
 import React, { useEffect, useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { AUTH_STACK_ROUTES } from "@/constants/routes";
-import { useLoginStore } from "@/lib/stores/login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ActivityIndicator, View } from "react-native";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Layout() {
   const [queryClient] = useState(() => new QueryClient());
-  // TODO: useAuth
-  const token = useLoginStore((state) => state.token);
+  const { token } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
@@ -35,10 +34,9 @@ export default function Layout() {
   }, [isAuthenticated, isLoading]);
 
   if (isLoading) {
-    // TODO: check loading
     return (
       <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#000" />
+        <ActivityIndicator size="large" />
       </View>
     );
   }

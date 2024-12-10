@@ -1,4 +1,4 @@
-import api, { baseURL } from "@/config/api";
+import api from "@/config/api";
 import { API_ROUTES } from "../constants";
 import { News } from "./types";
 

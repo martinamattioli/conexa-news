@@ -1,6 +1,5 @@
 import { LoginParameters } from "@/lib/services/Users/types";
 
-// TODO: check
 export interface LoginStore {
   token?: string;
   loginData?: LoginParameters;

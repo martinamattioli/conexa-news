@@ -10,8 +10,6 @@ interface NewsCardProps {
   body: string;
 }
 
-// TODO: style
-
 export function NewsCard({ id, title, body }: NewsCardProps) {
   const { isFavorite, handleSetFavorite } = useFavorite({ key: `${id}` });
   const router = useRouter();
@@ -21,7 +19,12 @@ export function NewsCard({ id, title, body }: NewsCardProps) {
   };
 
   return (
-    <TouchableOpacity onPress={handleCardPress} className="w-full my-1">
+    <TouchableOpacity
+      onPress={handleCardPress}
+      className="w-full my-1"
+      accessible={true}
+      accessibilityRole="button"
+    >
       <View className="w-full p-2 bg-gray-100 rounded-lg flex flex-row gap-x-2">
         <Image
           className="rounded-lg w-24 h-24"
@@ -37,6 +40,7 @@ export function NewsCard({ id, title, body }: NewsCardProps) {
             </Text>
             <IconButton onPress={handleSetFavorite}>
               <Icon
+                testID="favorite-icon"
                 name={isFavorite ? "star" : "star-o"}
                 size={16}
                 color="black"

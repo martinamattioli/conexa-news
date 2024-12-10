@@ -7,13 +7,15 @@ jest.mock("@/lib/stores/login");
 jest.mock("expo-router");
 
 describe("useAuth", () => {
-  it("should call clearToken, setIsLogged and router.replace when handleLogout is called", () => {
+  it("should call clearToken, setIsLogged, clearLoginData and router.replace when handleLogout is called", () => {
     const setIsLoggedMock = jest.fn();
     const clearTokenMock = jest.fn();
+    const clearLoginDataMock = jest.fn();
 
     (useLoginStore as unknown as jest.Mock).mockReturnValue({
       setIsLogged: setIsLoggedMock,
       clearToken: clearTokenMock,
+      clearLoginData: clearLoginDataMock,
     });
 
     const replaceMock = jest.fn();
@@ -26,6 +28,7 @@ describe("useAuth", () => {
     });
 
     expect(clearTokenMock).toHaveBeenCalledTimes(1);
+    expect(clearLoginDataMock).toHaveBeenCalledTimes(1);
     expect(setIsLoggedMock).toHaveBeenCalledWith(false);
     expect(replaceMock).toHaveBeenCalledWith("login");
   });

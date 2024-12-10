@@ -25,9 +25,6 @@ export const useLoginStore = createPersistentStore<LoginStore>(
     partialize: (state) => ({
       ...state,
       isLogged: undefined,
-      // TODO: borrar
-      // Mantener isLogged como no persistente ya que este es un valor que cambia constantemente durante
-      // la ejecucion de la aplicacion y no necesitamos almacenarlo
     }),
   }
 );

@@ -9,8 +9,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { useNewsStore } from "@/lib/stores/news";
 import { useTranslation } from "react-i18next";
 
-// TODO: refactor
-
 export default function Layout() {
   const { t } = useTranslation();
   const { handleLogout } = useAuth();
@@ -73,6 +71,11 @@ export default function Layout() {
         options={{
           title: t("profile.title"),
           headerTitle: t("profile.title"),
+          headerRight: () => (
+            <IconButton onPress={handleLogout} className="mr-4">
+              <Logout name="logout" color="black" size={24} />
+            </IconButton>
+          ),
           tabBarIcon: ({ color, size }) => (
             <User name="user" color={color} size={size} />
           ),

@@ -16,7 +16,8 @@
           "origin": "https://n"
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      "expo-font"
     ],
     "android": {
       "softwareKeyboardLayoutMode": "pan"

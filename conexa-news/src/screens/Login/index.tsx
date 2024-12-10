@@ -13,8 +13,6 @@ import {
   View,
 } from "react-native";
 
-// TODO: Loading state & Form validation: clear errors on change and submit
-
 export function Login() {
   const { t } = useTranslation();
   const { setToken, storeLoginData } = useLoginStore();
@@ -26,11 +24,8 @@ export function Login() {
   } = useForm();
 
   const onSubmit = (data) => {
-    // TODO: fix keyboard
     hideKeyboard();
-
     storeLoginData(data);
-    // Set random token just to simulate login
     const token = Math.random().toString(36).substring(7);
     setToken(token);
 

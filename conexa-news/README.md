@@ -32,7 +32,7 @@ The app supports multiple languages and uses persistent storage for both user au
 
   - `screens`: App's main screens.
 
-  - `translations`: Localization files.
+  - `translations`: ES/EN Translation files.
 
   - `utils`: Helpers and reusable methods.
 

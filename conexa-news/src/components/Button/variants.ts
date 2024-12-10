@@ -1,6 +1,6 @@
 export const buttonVariantClasses = {
-  primary: "bg-violet-600",
-  secondary: "border border-violet-600 bg-transparent",
+  primary: "bg-violet-600 py-4 px-6",
+  secondary: "border border-violet-600 bg-transparent  py-4 px-6",
   link: "bg-transparent underline",
 };
 

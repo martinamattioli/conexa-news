@@ -14,8 +14,8 @@ export default function Users() {
         className="w-full gap-y-4"
       >
         {data?.map(({ id, name, email, phone }) => (
-          <View key={id} className="bg-slate-400 my-1 rounded p-6">
-            <Text>{name}</Text>
+          <View key={id} className="my-1 rounded p-6 border-2 border-slate-200">
+            <Text className="text-lg font-bold">{name}</Text>
             <Text>{email}</Text>
             <Text>{phone}</Text>
           </View>

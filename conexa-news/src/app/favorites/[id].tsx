@@ -4,18 +4,19 @@ import NewsDetail from "@/screens/Home/NewsDetail";
 import { Stack } from "expo-router";
 import { View } from "react-native";
 import Icon from "@expo/vector-icons/FontAwesome";
+import { useTranslation } from "react-i18next";
 
 export default function NewsDetailScreen() {
+  const { t } = useTranslation();
   const { isFavorite, handleSetFavorite } = useFavorite();
 
   return (
     <View className="flex-1">
       <Stack.Screen
         options={{
-          // TODO: change title
-          headerBackTitle: "Back",
+          headerBackTitle: t("goBack"),
           headerShown: true,
-          headerTitle: "News Detail",
+          headerTitle: t("newsDetail.title"),
           headerRight: () => (
             <IconButton onPress={handleSetFavorite}>
               <Icon

@@ -1,0 +1,35 @@
+{
+  "goBack": "Volver",
+  "en": "Inglés",
+  "es": "Español",
+  "login": {
+    "welcome": "¡Bienvenido/a a Conexa News!",
+    "email": "correo electrónico",
+    "password": "contraseña",
+    "enter": "Ingresa tu {{field}}",
+    "login": "Iniciar sesión",
+    "required": "Debes ingresar tu {{field}}."
+  },
+  "home": {
+    "header": "Noticias",
+    "title": "Inicio",
+    "search": "Buscar"
+  },
+  "newsDetail": {
+    "title": "Detalle de la noticia"
+  },
+  "users": {
+    "title": "Usuarios"
+  },
+  "favorites": {
+    "header": "Noticias favoritas",
+    "title": "Favoritas"
+  },
+  "profile": {
+    "header": "Perfil",
+    "title": "Perfil",
+    "language": "Idioma",
+    "changeLanguage": "Cambiar idioma a:",
+    "logout": "Cerrar sesión"
+  }
+}

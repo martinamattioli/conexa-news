@@ -1,4 +1,5 @@
 import "../global.css";
+import "../config/i18n";
 import React, { useEffect, useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { AUTH_STACK_ROUTES } from "@/constants/routes";

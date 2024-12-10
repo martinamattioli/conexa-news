@@ -4,14 +4,10 @@ import { LoginStore } from "./types";
 export const useLoginStore = createPersistentStore<LoginStore>(
   (set) => ({
     token: undefined,
-    loginEmail: undefined,
     loginData: undefined,
     isLogged: false,
 
     setToken: (token: string) => set((state) => ({ ...state, token })),
-
-    setLoginEmail: (loginEmail: string) =>
-      set((state) => ({ ...state, loginEmail })),
 
     clearToken: () => set((state) => ({ ...state, token: undefined })),
 

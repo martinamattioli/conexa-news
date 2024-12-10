@@ -1,15 +1,18 @@
 import { Tabs } from "expo-router";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import Icon from "@expo/vector-icons/FontAwesome";
 import IconButton from "@/components/IconButton";
 import Logout from "@expo/vector-icons/MaterialIcons";
+import Home from "@expo/vector-icons/Ionicons";
+import User from "@expo/vector-icons/FontAwesome";
 
 import { useAuth } from "@/hooks/useAuth";
 import { useNewsStore } from "@/lib/stores/news";
+import { useTranslation } from "react-i18next";
 
 // TODO: refactor
 
 export default function Layout() {
+  const { t } = useTranslation();
   const { handleLogout } = useAuth();
   const { clearFavorites } = useNewsStore();
 
@@ -28,30 +31,33 @@ export default function Layout() {
       <Tabs.Screen
         name="home"
         options={{
-          headerTitle: "Conexa News",
+          title: t("home.title"),
+          headerTitle: t("home.header"),
           headerRight: () => (
             <IconButton onPress={handleLogout} className="mr-4">
               <Logout name="logout" color="black" size={24} />
             </IconButton>
           ),
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Home name="home" color={color} size={size} />
           ),
         }}
       />
       <Tabs.Screen
         name="users"
         options={{
-          headerTitle: "Users",
+          title: t("users.title"),
+          headerTitle: t("users.title"),
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="list" color={color} size={size} />
+            <User name="users" color={color} size={size} />
           ),
         }}
       />
       <Tabs.Screen
         name="favorites"
         options={{
-          headerTitle: "Favorite News",
+          title: t("favorites.title"),
+          headerTitle: t("favorites.header"),
           headerRight: () => (
             <IconButton onPress={clearFavorites} className="mr-4">
               <Icon name="trash-o" size={24} color="black" />
@@ -59,6 +65,16 @@ export default function Layout() {
           ),
           tabBarIcon: ({ color, size }) => (
             <Icon name="star" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: t("profile.title"),
+          headerTitle: t("profile.title"),
+          tabBarIcon: ({ color, size }) => (
+            <User name="user" color={color} size={size} />
           ),
         }}
       />

@@ -5,6 +5,7 @@ import { useLoginStore } from "@/lib/stores/login";
 import { hideKeyboard } from "@/utils/keyboard";
 import { router } from "expo-router";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import {
   KeyboardAvoidingView,
   Text,
@@ -12,10 +13,10 @@ import {
   View,
 } from "react-native";
 
-// TODO: Translations, Loading state
-// TODO: Form validation: clear errors on change and submit
+// TODO: Loading state & Form validation: clear errors on change and submit
 
 export function Login() {
+  const { t } = useTranslation();
   const { setToken, storeLoginData } = useLoginStore();
 
   const {
@@ -46,33 +47,25 @@ export function Login() {
           style={{ flex: 1 }}
         >
           <View className="w-full gap-y-16">
-            <Text className="text-2xl font-bold">Welcome to Conexa News</Text>
+            <Text className="text-2xl font-bold">{t("login.welcome")}</Text>
             <View className="w-full flex gap-y-6">
               <TextInput
                 control={control}
                 name="email"
-                placeholder="Ingrese su email"
+                placeholder={t("login.enter", { field: t("login.email") })}
                 keyboardType="email-address"
-                label="Email"
+                label={t("email")}
                 rules={{
-                  required: "You must enter your email",
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: "Enter a valid email address",
-                  },
+                  required: t("login.required", { field: t("login.email") }),
                 }}
               />
               <TextInput
                 control={control}
                 name="password"
-                placeholder="Ingrese su contraseña"
-                label="Contraseña"
+                placeholder={t("login.enter", { field: t("login.password") })}
+                label={t("password")}
                 rules={{
-                  required: "You must enter your password",
-                  minLength: {
-                    value: 8,
-                    message: "Password must be at least 8 characters",
-                  },
+                  required: t("login.required", { field: t("login.password") }),
                 }}
               />
             </View>
@@ -80,7 +73,7 @@ export function Login() {
         </KeyboardAvoidingView>
         <Button
           onPress={handleSubmit(onSubmit)}
-          title="Login"
+          title={t("login.login")}
           loading={isSubmitting}
         />
       </View>

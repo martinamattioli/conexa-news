@@ -8,6 +8,7 @@ import {
 import { buttonVariantClasses, textVariantClasses } from "./variants";
 
 interface ButtonProps extends PressableProps {
+  className?: string;
   onPress: () => void;
   disabled?: boolean;
   loading?: boolean;
@@ -16,6 +17,7 @@ interface ButtonProps extends PressableProps {
 }
 
 export function Button({
+  className,
   variant = "primary",
   onPress,
   disabled,
@@ -25,24 +27,27 @@ export function Button({
   return (
     <Pressable
       onPress={onPress}
-      disabled={disabled}
-      className={`w-full flex-row items-center justify-center rounded-lg px-6 py-4 ${
+      disabled={disabled || loading}
+      className={`w-full flex-row items-center justify-center rounded-lg ${
         buttonVariantClasses[variant]
-      } ${disabled ? "opacity-25" : "opacity-100"}`}
+      } ${disabled ? "opacity-25" : "opacity-100"} ${className}`}
     >
-      {({ pressed }) => (
-        <View>
-          {loading ? (
-            <ActivityIndicator />
-          ) : (
-            <Text
-              className={`text-lg font-medium ${textVariantClasses[variant]}`}
-            >
-              {title}
-            </Text>
-          )}
-        </View>
-      )}
+      {
+        // TODO: ver
+        ({ pressed }) => (
+          <View>
+            {loading ? (
+              <ActivityIndicator testID="ActivityIndicator" />
+            ) : (
+              <Text
+                className={`text-lg font-medium ${textVariantClasses[variant]}`}
+              >
+                {title}
+              </Text>
+            )}
+          </View>
+        )
+      }
     </Pressable>
   );
 }
